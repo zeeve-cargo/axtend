@@ -22,5 +22,5 @@ tools/*-local.json
 tools/*-local-raw.json
 tools/build
 builds/
-data/
+chain_data/
 res/
