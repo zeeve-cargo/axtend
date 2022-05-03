@@ -1,0 +1,50 @@
+[package]
+name = "axtend-relay-encoder"
+authors = ["PureStake"]
+edition = "2018"
+homepage = "https://axtend.network"
+license = "GPL-3.0-only"
+repository = "https://github.com/PureStake/axtend/"
+version = "0.1.0"
+
+[dependencies]
+
+# Axtend
+relay-encoder-precompiles = { path = "../../precompiles/relay-encoder/", default-features = false }
+xcm-primitives = { path = "../../primitives/xcm", default-features = false }
+
+# Substrate
+frame-system = { git = "https://github.com/axia-tech/axlib", branch = "axlib", default-features = false }
+pallet-staking = { git = "https://github.com/axia-tech/axlib", branch = "axlib", default-features = false }
+parity-scale-codec = { version = "2.0.0", default-features = false, features = [
+	"derive",
+] }
+sp-runtime = { git = "https://github.com/axia-tech/axlib", branch = "axlib", default-features = false }
+sp-std = { git = "https://github.com/axia-tech/axlib", branch = "axlib", default-features = false }
+
+# Cumulus
+cumulus-primitives-core = { git = "https://github.com/axia-tech/cumulus", branch = "cumulus", default-features = false }
+
+[dev-dependencies]
+frame-support = { git = "https://github.com/axia-tech/axlib", branch = "axlib" }
+pallet-proxy = { git = "https://github.com/axia-tech/axlib", branch = "axlib" }
+pallet-utility = { git = "https://github.com/axia-tech/axlib", branch = "axlib" }
+
+axctest-runtime = { git = "https://github.com/axia-tech/axia", branch = "axia" }
+axia-runtime = { git = "https://github.com/axia-tech/axia", branch = "axia" }
+betanet-runtime = { git = "https://github.com/axia-tech/axia", branch = "axia" }
+alphanet-runtime = { git = "https://github.com/axia-tech/axia", branch = "axia" }
+
+[features]
+default = ["std"]
+std = [
+	"cumulus-primitives-core/std",
+	"frame-system/std",
+	"pallet-staking/std",
+	"parity-scale-codec/std",
+	"parity-scale-codec/std",
+	"relay-encoder-precompiles/std",
+	"sp-runtime/std",
+	"sp-std/std",
+	"xcm-primitives/std",
+]

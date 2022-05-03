@@ -1,0 +1,64 @@
+[package]
+name = "xcm-transactor"
+authors = ["PureStake"]
+edition = "2018"
+version = "0.1.0"
+
+[dependencies]
+log = { version = "0.4", default-features = false }
+serde = { version = "1.0.124", optional = true }
+
+# Axtend
+xcm-primitives = { path = "../../primitives/xcm/", default-features = false }
+
+# Substrate
+frame-support = { git = "https://github.com/axia-tech/axlib", branch = "axlib", default-features = false }
+frame-system = { git = "https://github.com/axia-tech/axlib", branch = "axlib", default-features = false }
+parity-scale-codec = { version = "2.0.0", default-features = false, features = [
+	"derive",
+] }
+scale-info = { version = "1.0", default-features = false, features = [
+	"derive",
+] }
+sp-io = { git = "https://github.com/axia-tech/axlib", branch = "axlib", default-features = false }
+sp-runtime = { git = "https://github.com/axia-tech/axlib", branch = "axlib", default-features = false }
+sp-std = { git = "https://github.com/axia-tech/axlib", branch = "axlib", default-features = false }
+
+# Cumulus
+cumulus-primitives-core = { git = "https://github.com/axia-tech/cumulus", branch = "cumulus", default-features = false }
+
+# Axia / XCM
+orml-traits = { git = "https://github.com/axia-tech/open-runtime-module-library", branch = "orml", default-features = false }
+xcm = { git = "https://github.com/axia-tech/axia", branch = "axia", default-features = false }
+xcm-builder = { git = "https://github.com/axia-tech/axia", branch = "axia", default-features = false }
+xcm-executor = { git = "https://github.com/axia-tech/axia", branch = "axia", default-features = false }
+
+# Benchmarks
+frame-benchmarking = { git = "https://github.com/axia-tech/axlib", branch = "axlib", optional = true, default-features = false }
+
+[dev-dependencies]
+pallet-balances = { git = "https://github.com/axia-tech/axlib", branch = "axlib" }
+pallet-timestamp = { git = "https://github.com/axia-tech/axlib", branch = "axlib" }
+pallet-xcm = { git = "https://github.com/axia-tech/axia", branch = "axia" }
+parity-scale-codec = { version = "2.1.1" }
+sp-core = { git = "https://github.com/axia-tech/axlib", branch = "axlib" }
+
+[features]
+default = ["std"]
+std = [
+	"cumulus-primitives-core/std",
+	"frame-benchmarking/std",
+	"frame-support/std",
+	"frame-system/std",
+	"orml-traits/std",
+	"parity-scale-codec/std",
+	"serde",
+	"sp-io/std",
+	"sp-runtime/std",
+	"sp-std/std",
+	"xcm-executor/std",
+	"xcm-primitives/std",
+	"xcm/std",
+]
+runtime-benchmarks = ["frame-benchmarking"]
+try-runtime = ["frame-support/try-runtime"]

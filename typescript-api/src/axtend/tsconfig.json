@@ -1,0 +1,13 @@
+{
+  "extends": "../../tsconfig.base.json",
+  "compilerOptions": {
+    "rootDir": ".",
+    "outDir": "../../build",
+    "paths": {
+      "@axtend/api-augment/*": ["src/axtend/*"],
+      "@axia/api/augment": ["src/axtend/interfaces/augment-api.ts"],
+      "@axia/types/augment": ["src/axtend/interfaces/augment-types.ts"],
+      "@axia/types/lookup": ["src/axtend/interfaces/types-lookup.ts"]
+    }
+  }
+}

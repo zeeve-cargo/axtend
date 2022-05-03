@@ -1,0 +1,26 @@
+[workspace]
+exclude = ["bin/utils/moonkey"]
+members = [
+	"bin/utils/moonkey",
+	"client/rpc/finality",
+	"client/rpc/manual-xcm",
+	"node",
+	"node/cli",
+	"node/service",
+	"pallets/maintenance-mode",
+	"pallets/migrations",
+	"pallets/proxy-genesis-companion",
+	"precompiles/utils/macro",
+	"runtime/moonbase",
+	"runtime/axtend",
+	"runtime/moonriver",
+]
+
+[patch.crates-io]
+ethereum = { git = "https://github.com/axia-tech/ethereum", branch = "ethereum" }
+evm = { git = "https://github.com/axia-tech/evm", branch = "evm" }
+evm-gasometer = { git = "https://github.com/axia-tech/evm", branch = "evm" }
+evm-runtime = { git = "https://github.com/axia-tech/evm", branch = "evm" }
+
+[profile.release]
+panic = "unwind"

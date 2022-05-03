@@ -1,0 +1,34 @@
+[package]
+name = "axtend-rpc-txpool"
+authors = ["PureStake"]
+edition = "2018"
+homepage = "https://axtend.network"
+license = "GPL-3.0-only"
+repository = "https://github.com/PureStake/axtend/"
+version = "0.6.0"
+
+[dependencies]
+jsonrpc-core = "18.0.0"
+rlp = "0.5"
+serde = { version = "1.0", features = ["derive"] }
+sha3 = "0.9"
+
+# Axtend
+axtend-rpc-core-txpool = { path = "../../rpc-core/txpool" }
+axtend-rpc-primitives-txpool = { path = "../../../primitives/rpc/txpool" }
+
+# Substrate
+frame-system = { git = "https://github.com/axia-tech/axlib", branch = "axlib" }
+sc-transaction-pool = { git = "https://github.com/axia-tech/axlib", branch = "axlib" }
+sc-transaction-pool-api = { git = "https://github.com/axia-tech/axlib", branch = "axlib" }
+sp-api = { git = "https://github.com/axia-tech/axlib", branch = "axlib" }
+sp-blockchain = { git = "https://github.com/axia-tech/axlib", branch = "axlib" }
+sp-io = { git = "https://github.com/axia-tech/axlib", branch = "axlib" }
+sp-runtime = { git = "https://github.com/axia-tech/axlib", branch = "axlib" }
+sp-std = { git = "https://github.com/axia-tech/axlib", branch = "axlib" }
+
+# Frontier
+ethereum-types = "0.12.1"
+fc-rpc = { git = "https://github.com/axia-tech/frontier", branch = "frontier", features = [
+    "rpc_binary_search_estimate",
+] }

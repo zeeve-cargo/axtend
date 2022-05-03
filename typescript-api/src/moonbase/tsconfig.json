@@ -1,0 +1,13 @@
+{
+  "extends": "../../tsconfig.base.json",
+  "compilerOptions": {
+    "rootDir": ".",
+    "outDir": "../../build/moonbase",
+    "paths": {
+      "@axtend/api-augment/moonbase/*": ["src/moonbase/*"],
+      "@axia/api/augment": ["src/moonbase/interfaces/augment-api.ts"],
+      "@axia/types/augment": ["src/moonbase/interfaces/augment-types.ts"],
+      "@axia/types/lookup": ["src/moonbase/interfaces/types-lookup.ts"]
+    }
+  }
+}

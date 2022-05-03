@@ -1,0 +1,61 @@
+[package]
+name = "axtend-cli"
+authors = ["PureStake"]
+edition = "2018"
+version = "0.21.1"
+
+[dependencies]
+clap = { version = "3.1", features = ["derive"] }
+log = "0.4.8"
+parity-scale-codec = "2.2"
+
+# Axtend
+cli-opt = { package = "axtend-cli-opt", path = "../cli-opt", default-features = false }
+perf-test = { path = "../perf-test" }
+service = { package = "axtend-service", path = "../service", default-features = false }
+
+# Substrate
+frame-benchmarking-cli = { git = "https://github.com/axia-tech/axlib", branch = "axlib" }
+sc-cli = { git = "https://github.com/axia-tech/axlib", branch = "axlib" }
+sc-service = { git = "https://github.com/axia-tech/axlib", branch = "axlib" }
+sc-telemetry = { git = "https://github.com/axia-tech/axlib", branch = "axlib" }
+sc-tracing = { git = "https://github.com/axia-tech/axlib", branch = "axlib" }
+sp-core = { git = "https://github.com/axia-tech/axlib", branch = "axlib" }
+sp-runtime = { git = "https://github.com/axia-tech/axlib", branch = "axlib" }
+substrate-prometheus-endpoint = { git = "https://github.com/axia-tech/axlib", branch = "axlib" }
+try-runtime-cli = { git = "https://github.com/axia-tech/axlib", branch = "axlib", optional = true }
+
+# Cumulus / Nimbus
+cumulus-client-cli = { git = "https://github.com/axia-tech/cumulus", branch = "cumulus" }
+cumulus-client-service = { git = "https://github.com/axia-tech/cumulus", branch = "cumulus" }
+cumulus-primitives-core = { git = "https://github.com/axia-tech/cumulus", branch = "cumulus" }
+nimbus-primitives = { git = "https://github.com/axia-tech/nimbus", branch = "nimbus" }
+
+# Axia
+axia-cli = { git = "https://github.com/axia-tech/axia", branch = "axia" }
+axia-allychain = { git = "https://github.com/axia-tech/axia", branch = "axia" }
+axia-primitives = { git = "https://github.com/axia-tech/axia", branch = "axia" }
+axia-service = { git = "https://github.com/axia-tech/axia", branch = "axia" }
+
+[build-dependencies]
+substrate-build-script-utils = { git = "https://github.com/axia-tech/axlib", branch = "axlib" }
+
+[features]
+default = [
+	"moonbase-native",
+	"axtend-native",
+	"moonriver-native",
+	"wasmtime",
+	"alphanet-native",
+]
+
+alphanet-native = ["axia-service/alphanet-native"]
+
+moonbase-native = ["service/moonbase-native", "alphanet-native"]
+axtend-native = ["service/axtend-native"]
+moonriver-native = ["service/moonriver-native"]
+
+moonbase-runtime-benchmarks = ["service/moonbase-runtime-benchmarks"]
+runtime-benchmarks = ["service/runtime-benchmarks"]
+try-runtime = ["service/try-runtime", "try-runtime-cli"]
+wasmtime = ["sc-cli/wasmtime"]

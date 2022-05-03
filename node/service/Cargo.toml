@@ -1,0 +1,192 @@
+[package]
+name = "axtend-service"
+authors = ["PureStake"]
+edition = "2018"
+homepage = "https://axtend.network"
+license = "GPL-3.0-only"
+version = "0.21.1"
+
+[dependencies]
+ansi_term = "0.12.1"
+async-io = "1.3"
+async-trait = "0.1.42"
+derive_more = "0.99"
+exit-future = "0.1.4"
+flume = "0.10.9"
+futures = { version = "0.3.1", features = ["compat"] }
+hex-literal = "0.3.4"
+jsonrpc-core = "18.0.0"
+jsonrpc-pubsub = "18.0.0"
+libsecp256k1 = { version = "0.6", features = ["hmac"] }
+log = "0.4"
+maplit = "1.0.2"
+parking_lot = "0.9.0"
+serde = { version = "1.0.101", features = ["derive"] }
+serde_json = "1.0"
+sha3 = { version = "0.9", default-features = false }
+structopt = "0.3"
+tiny-bip39 = { version = "0.8", default-features = false }
+tiny-hderive = { version = "0.3.0", default-features = false }
+tokio = { version = "1.13.0", features = ["macros", "sync"] }
+trie-root = "0.15.2"
+
+# Axtend
+cli-opt = { package = "axtend-cli-opt", path = "../cli-opt" }
+manual-xcm-rpc = { path = "../../client/rpc/manual-xcm" }
+axtend-core-primitives = { path = "../../core-primitives" }
+axtend-finality-rpc = { path = "../../client/rpc/finality" }
+axtend-primitives-ext = { path = "../../primitives/ext" }
+axtend-rpc-debug = { path = "../../client/rpc/debug" }
+axtend-rpc-primitives-debug = { path = "../../primitives/rpc/debug" }
+axtend-rpc-primitives-txpool = { path = "../../primitives/rpc/txpool" }
+axtend-rpc-trace = { path = "../../client/rpc/trace" }
+axtend-rpc-txpool = { path = "../../client/rpc/txpool" }
+allychain-staking = { path = "../../pallets/allychain-staking" }
+
+# Axtend runtimes
+moonbase-runtime = { path = "../../runtime/moonbase", optional = true }
+axtend-runtime = { path = "../../runtime/axtend", optional = true }
+moonriver-runtime = { path = "../../runtime/moonriver", optional = true }
+
+# Substrate
+frame-system-rpc-runtime-api = { git = "https://github.com/axia-tech/axlib", branch = "axlib" }
+pallet-transaction-payment-rpc = { git = "https://github.com/axia-tech/axlib", branch = "axlib" }
+pallet-transaction-payment-rpc-runtime-api = { git = "https://github.com/axia-tech/axlib", branch = "axlib" }
+parity-scale-codec = "2.2"
+sc-basic-authorship = { git = "https://github.com/axia-tech/axlib", branch = "axlib" }
+sc-chain-spec = { git = "https://github.com/axia-tech/axlib", branch = "axlib" }
+sc-cli = { git = "https://github.com/axia-tech/axlib", branch = "axlib", features = [
+	"wasmtime",
+] }
+sc-client-api = { git = "https://github.com/axia-tech/axlib", branch = "axlib" }
+sc-client-db = { git = "https://github.com/axia-tech/axlib", branch = "axlib" }
+sc-consensus = { git = "https://github.com/axia-tech/axlib", branch = "axlib" }
+sc-consensus-manual-seal = { git = "https://github.com/axia-tech/axlib", branch = "axlib" }
+sc-executor = { git = "https://github.com/axia-tech/axlib", branch = "axlib", features = [
+	"wasmtime",
+] }
+sc-finality-grandpa = { git = "https://github.com/axia-tech/axlib", branch = "axlib" }
+sc-informant = { git = "https://github.com/axia-tech/axlib", branch = "axlib" }
+sc-network = { git = "https://github.com/axia-tech/axlib", branch = "axlib" }
+sc-rpc = { git = "https://github.com/axia-tech/axlib", branch = "axlib" }
+sc-rpc-api = { git = "https://github.com/axia-tech/axlib", branch = "axlib" }
+sc-service = { git = "https://github.com/axia-tech/axlib", branch = "axlib" }
+sc-telemetry = { git = "https://github.com/axia-tech/axlib", branch = "axlib" }
+sc-tracing = { git = "https://github.com/axia-tech/axlib", branch = "axlib" }
+sc-transaction-pool = { git = "https://github.com/axia-tech/axlib", branch = "axlib" }
+sc-transaction-pool-api = { git = "https://github.com/axia-tech/axlib", branch = "axlib" }
+sp-api = { git = "https://github.com/axia-tech/axlib", branch = "axlib" }
+sp-block-builder = { git = "https://github.com/axia-tech/axlib", branch = "axlib" }
+sp-blockchain = { git = "https://github.com/axia-tech/axlib", branch = "axlib" }
+sp-consensus = { git = "https://github.com/axia-tech/axlib", branch = "axlib" }
+sp-core = { git = "https://github.com/axia-tech/axlib", branch = "axlib" }
+sp-inherents = { git = "https://github.com/axia-tech/axlib", branch = "axlib" }
+sp-io = { git = "https://github.com/axia-tech/axlib", branch = "axlib" }
+sp-keystore = { git = "https://github.com/axia-tech/axlib", branch = "axlib" }
+sp-offchain = { git = "https://github.com/axia-tech/axlib", branch = "axlib" }
+sp-runtime = { git = "https://github.com/axia-tech/axlib", branch = "axlib" }
+sp-session = { git = "https://github.com/axia-tech/axlib", branch = "axlib" }
+sp-storage = { git = "https://github.com/axia-tech/axlib", branch = "axlib" }
+sp-timestamp = { git = "https://github.com/axia-tech/axlib", branch = "axlib" }
+sp-transaction-pool = { git = "https://github.com/axia-tech/axlib", branch = "axlib" }
+sp-trie = { git = "https://github.com/axia-tech/axlib", branch = "axlib" }
+substrate-frame-rpc-system = { git = "https://github.com/axia-tech/axlib", branch = "axlib" }
+substrate-prometheus-endpoint = { git = "https://github.com/axia-tech/axlib", branch = "axlib" }
+
+# Frontier
+fc-consensus = { git = "https://github.com/axia-tech/frontier", branch = "frontier" }
+fc-db = { git = "https://github.com/axia-tech/frontier", branch = "frontier" }
+fc-mapping-sync = { git = "https://github.com/axia-tech/frontier", branch = "frontier" }
+fc-rpc = { git = "https://github.com/axia-tech/frontier", branch = "frontier", features = [
+	"rpc_binary_search_estimate",
+] }
+fc-rpc-core = { git = "https://github.com/axia-tech/frontier", branch = "frontier" }
+fp-consensus = { git = "https://github.com/axia-tech/frontier", branch = "frontier" }
+fp-rpc = { git = "https://github.com/axia-tech/frontier", branch = "frontier" }
+fp-storage = { git = "https://github.com/axia-tech/frontier", branch = "frontier" }
+pallet-ethereum = { git = "https://github.com/axia-tech/frontier", branch = "frontier" }
+
+# Cumulus / Nimbus
+cumulus-client-cli = { git = "https://github.com/axia-tech/cumulus", branch = "cumulus" }
+cumulus-client-collator = { git = "https://github.com/axia-tech/cumulus", branch = "cumulus" }
+cumulus-client-consensus-common = { git = "https://github.com/axia-tech/cumulus", branch = "cumulus" }
+cumulus-client-consensus-relay-chain = { git = "https://github.com/axia-tech/cumulus", branch = "cumulus" }
+cumulus-client-network = { git = "https://github.com/axia-tech/cumulus", branch = "cumulus" }
+cumulus-client-service = { git = "https://github.com/axia-tech/cumulus", branch = "cumulus" }
+cumulus-primitives-core = { git = "https://github.com/axia-tech/cumulus", branch = "cumulus" }
+cumulus-primitives-allychain-inherent = { git = "https://github.com/axia-tech/cumulus", branch = "cumulus" }
+cumulus-relay-chain-interface = { git = "https://github.com/axia-tech/cumulus", branch = "cumulus" }
+cumulus-relay-chain-local = { git = "https://github.com/axia-tech/cumulus", branch = "cumulus" }
+cumulus-test-relay-sproof-builder = { git = "https://github.com/axia-tech/cumulus", branch = "cumulus" }
+nimbus-consensus = { git = "https://github.com/axia-tech/nimbus", branch = "nimbus" }
+# TODO we should be able to depend only on the primitives crate once we move the inherent data provider there.
+nimbus-primitives = { git = "https://github.com/axia-tech/nimbus", branch = "nimbus" }
+pallet-author-inherent = { git = "https://github.com/axia-tech/nimbus", branch = "nimbus" }
+
+# Axia
+axia-cli = { git = "https://github.com/axia-tech/axia", branch = "axia" }
+axia-allychain = { git = "https://github.com/axia-tech/axia", branch = "axia" }
+axia-primitives = { git = "https://github.com/axia-tech/axia", branch = "axia" }
+axia-service = { git = "https://github.com/axia-tech/axia", branch = "axia" }
+xcm = { git = "https://github.com/axia-tech/axia", branch = "axia", default-features = false }
+
+# Benchmarking
+frame-benchmarking = { git = "https://github.com/axia-tech/axlib", branch = "axlib" }
+frame-benchmarking-cli = { git = "https://github.com/axia-tech/axlib", branch = "axlib" }
+
+[dev-dependencies]
+assert_cmd = "0.12"
+nix = "0.17"
+prometheus = { version = "0.13.0", default-features = false }
+rand = "0.7.3"
+
+# Axia dev-dependencies
+axia-runtime-common = { git = "https://github.com/axia-tech/axia", branch = "axia" }
+
+# Substrate dev-dependencies
+pallet-sudo = { git = "https://github.com/axia-tech/axlib", branch = "axlib" }
+substrate-test-client = { git = "https://github.com/axia-tech/axlib", branch = "axlib" }
+substrate-test-runtime-client = { git = "https://github.com/axia-tech/axlib", branch = "axlib" }
+
+[build-dependencies]
+substrate-build-script-utils = { git = "https://github.com/axia-tech/axlib", branch = "axlib" }
+
+[features]
+default = [
+	"axctest-native",
+	"moonbase-native",
+	"axtend-native",
+	"moonriver-native",
+	"betanet-native",
+	"alphanet-native",
+]
+
+axctest-native = ["axia-cli/axctest-native", "axia-service/axctest-native"]
+betanet-native = ["axia-cli/betanet-native", "axia-service/betanet-native"]
+alphanet-native = ["axia-cli/alphanet-native", "axia-service/alphanet-native"]
+
+moonbase-native = ["moonbase-runtime", "alphanet-native"]
+axtend-native = ["axtend-runtime"]
+moonriver-native = ["moonriver-runtime"]
+
+test-spec = []
+
+runtime-benchmarks = [
+	"moonbase-native",
+	"moonbase-runtime/runtime-benchmarks",
+	"axtend-native",
+	"axtend-runtime/runtime-benchmarks",
+	"moonriver-native",
+	"moonriver-runtime/runtime-benchmarks",
+	"pallet-ethereum/runtime-benchmarks",
+]
+
+
+moonbase-runtime-benchmarks = [
+	"moonbase-native",
+	"moonbase-runtime/moonbase-runtime-benchmarks",
+	"moonbase-runtime/runtime-benchmarks",
+	"pallet-ethereum/runtime-benchmarks",
+]
+
+try-runtime = ["moonbase-runtime", "moonbase-runtime/try-runtime"]

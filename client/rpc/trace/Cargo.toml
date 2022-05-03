@@ -1,0 +1,44 @@
+[package]
+name = "axtend-rpc-trace"
+authors = ["PureStake"]
+edition = "2018"
+homepage = "https://axtend.network"
+license = "GPL-3.0-only"
+repository = "https://github.com/PureStake/axtend/"
+version = "0.6.0"
+
+[dependencies]
+ethereum = { version = "0.11.1", features = ["with-codec"] }
+ethereum-types = "0.12.1"
+futures = { version = "0.3" }
+jsonrpc-core = "18.0.0"
+serde = { version = "1.0", features = ["derive"] }
+sha3 = "0.9"
+tokio = { version = "1.10", features = ["sync", "time"] }
+tracing = "0.1.25"
+
+# Axtend
+axtend-client-evm-tracing = { path = "../../evm-tracing" }
+axtend-rpc-core-trace = { path = "../../rpc-core/trace" }
+axtend-rpc-core-types = { path = "../../rpc-core/types" }
+axtend-rpc-primitives-debug = { path = "../../../primitives/rpc/debug" }
+
+# Substrate
+sc-client-api = { git = "https://github.com/axia-tech/axlib", branch = "axlib" }
+sc-network = { git = "https://github.com/axia-tech/axlib", branch = "axlib" }
+sc-utils = { git = "https://github.com/axia-tech/axlib", branch = "axlib" }
+sp-api = { git = "https://github.com/axia-tech/axlib", branch = "axlib" }
+sp-block-builder = { git = "https://github.com/axia-tech/axlib", branch = "axlib" }
+sp-blockchain = { git = "https://github.com/axia-tech/axlib", branch = "axlib" }
+sp-io = { git = "https://github.com/axia-tech/axlib", branch = "axlib" }
+sp-runtime = { git = "https://github.com/axia-tech/axlib", branch = "axlib" }
+sp-std = { git = "https://github.com/axia-tech/axlib", branch = "axlib" }
+sp-transaction-pool = { git = "https://github.com/axia-tech/axlib", branch = "axlib" }
+
+# Frontier
+fc-consensus = { git = "https://github.com/axia-tech/frontier", branch = "frontier" }
+fc-rpc = { git = "https://github.com/axia-tech/frontier", branch = "frontier", features = [
+    "rpc_binary_search_estimate",
+] }
+fc-rpc-core = { git = "https://github.com/axia-tech/frontier", branch = "frontier" }
+fp-rpc = { git = "https://github.com/axia-tech/frontier", branch = "frontier" }

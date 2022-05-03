@@ -1,0 +1,21 @@
+[package]
+name = "axtend-cli-opt"
+authors = ["PureStake"]
+edition = "2018"
+homepage = "https://axtend.network"
+license = "GPL-3.0-only"
+version = "0.21.1"
+
+[dependencies]
+clap = { version = "3.1", features = ["derive"] }
+libsecp256k1 = "0.6"
+primitive-types = "0.10.0"
+sha3 = "0.9"
+tiny-bip39 = "0.8"
+tiny-hderive = "0.3.0"
+
+# Axtend
+account = { path = "../../primitives/account" }
+
+# Substrate
+sp-runtime = { git = "https://github.com/axia-tech/axlib", branch = "axlib" }
